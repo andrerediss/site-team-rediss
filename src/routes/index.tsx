@@ -68,7 +68,7 @@ function Hero() {
 
       <div className="flex flex-col items-center text-center">
         <h1 className="sr-only">André Rediss — Personal Trainer & Muay Thai Coach</h1>
-        <p className="mb-6 font-display text-xl font-black uppercase tracking-[0.5em] text-white">
+        <p className="mb-6 font-display text-sm font-black uppercase tracking-[0.4em] text-white/80">
           Team Rediss
         </p>
         <div className="overflow-hidden rounded-3xl border border-border/60 bg-[#0f0f0f] p-3 shadow-[0_20px_60px_-15px_rgba(204,20,20,0.35)] ring-1 ring-primary/20">
