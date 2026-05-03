@@ -55,14 +55,16 @@ function Hero() {
 
       <div className="flex flex-col items-center text-center">
         <h1 className="sr-only">André Rediss — Personal Trainer & Muay Thai Coach</h1>
-        <img
-          src={logo}
-          alt="André Rediss — Personal Trainer & Muay Thai Coach"
-          width={520}
-          height={520}
-          className="w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] drop-shadow-[0_8px_40px_rgba(204,20,20,0.25)]"
-        />
-        <p className="-mt-2 text-sm uppercase tracking-[0.3em] text-muted-foreground sm:text-base">
+        <div className="overflow-hidden rounded-3xl border border-border/60 bg-[#0f0f0f] p-3 shadow-[0_20px_60px_-15px_rgba(204,20,20,0.35)] ring-1 ring-primary/20">
+          <img
+            src={logo}
+            alt="André Rediss — Personal Trainer & Muay Thai Coach"
+            width={360}
+            height={360}
+            className="block h-auto w-[240px] rounded-2xl sm:w-[300px] md:w-[340px]"
+          />
+        </div>
+        <p className="mt-8 text-sm uppercase tracking-[0.3em] text-muted-foreground sm:text-base">
           Personal Trainer <span className="text-primary">•</span> Muay Thai Coach
         </p>
         <div className="mt-6 h-[3px] w-24 bg-primary" />
