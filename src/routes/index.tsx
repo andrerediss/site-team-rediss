@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Instagram, Dumbbell, Flame, Laptop, ArrowRight } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useReveal } from "@/hooks/use-reveal";
+import { useEffect } from "react";
 
 const WHATSAPP = "https://wa.me/5551989225787";
 const INSTAGRAM = "https://instagram.com/andrerediss";
@@ -37,6 +38,15 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("pageview", {
+        page_path: "/",
+        page_title: "André Rediss — Personal Trainer & Muay Thai Coach",
+      });
+    }
+  }, []);
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Hero />
