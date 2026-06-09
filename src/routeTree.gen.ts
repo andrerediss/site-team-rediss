@@ -15,6 +15,10 @@ import { Route as TreinarIndexRouteImport } from './routes/treinar/index'
 import { Route as TreinarTurmaRouteImport } from './routes/treinar/turma'
 import { Route as TreinarPersonalRouteImport } from './routes/treinar/personal'
 import { Route as TreinarMuaythaiRouteImport } from './routes/treinar/muaythai'
+import { Route as TreinarPersonalIndexRouteImport } from './routes/treinar/personal/index'
+import { Route as TreinarMuaythaiIndexRouteImport } from './routes/treinar/muaythai/index'
+import { Route as TreinarPersonalAgendarRouteImport } from './routes/treinar/personal/agendar'
+import { Route as TreinarMuaythaiAgendarRouteImport } from './routes/treinar/muaythai/agendar'
 
 const TreinarRoute = TreinarRouteImport.update({
   id: '/treinar',
@@ -46,30 +50,60 @@ const TreinarMuaythaiRoute = TreinarMuaythaiRouteImport.update({
   path: '/muaythai',
   getParentRoute: () => TreinarRoute,
 } as any)
+const TreinarPersonalIndexRoute = TreinarPersonalIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => TreinarPersonalRoute,
+} as any)
+const TreinarMuaythaiIndexRoute = TreinarMuaythaiIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => TreinarMuaythaiRoute,
+} as any)
+const TreinarPersonalAgendarRoute = TreinarPersonalAgendarRouteImport.update({
+  id: '/agendar',
+  path: '/agendar',
+  getParentRoute: () => TreinarPersonalRoute,
+} as any)
+const TreinarMuaythaiAgendarRoute = TreinarMuaythaiAgendarRouteImport.update({
+  id: '/agendar',
+  path: '/agendar',
+  getParentRoute: () => TreinarMuaythaiRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/treinar': typeof TreinarRouteWithChildren
-  '/treinar/muaythai': typeof TreinarMuaythaiRoute
-  '/treinar/personal': typeof TreinarPersonalRoute
+  '/treinar/muaythai': typeof TreinarMuaythaiRouteWithChildren
+  '/treinar/personal': typeof TreinarPersonalRouteWithChildren
   '/treinar/turma': typeof TreinarTurmaRoute
   '/treinar/': typeof TreinarIndexRoute
+  '/treinar/muaythai/agendar': typeof TreinarMuaythaiAgendarRoute
+  '/treinar/personal/agendar': typeof TreinarPersonalAgendarRoute
+  '/treinar/muaythai/': typeof TreinarMuaythaiIndexRoute
+  '/treinar/personal/': typeof TreinarPersonalIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/treinar/muaythai': typeof TreinarMuaythaiRoute
-  '/treinar/personal': typeof TreinarPersonalRoute
   '/treinar/turma': typeof TreinarTurmaRoute
   '/treinar': typeof TreinarIndexRoute
+  '/treinar/muaythai/agendar': typeof TreinarMuaythaiAgendarRoute
+  '/treinar/personal/agendar': typeof TreinarPersonalAgendarRoute
+  '/treinar/muaythai': typeof TreinarMuaythaiIndexRoute
+  '/treinar/personal': typeof TreinarPersonalIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/treinar': typeof TreinarRouteWithChildren
-  '/treinar/muaythai': typeof TreinarMuaythaiRoute
-  '/treinar/personal': typeof TreinarPersonalRoute
+  '/treinar/muaythai': typeof TreinarMuaythaiRouteWithChildren
+  '/treinar/personal': typeof TreinarPersonalRouteWithChildren
   '/treinar/turma': typeof TreinarTurmaRoute
   '/treinar/': typeof TreinarIndexRoute
+  '/treinar/muaythai/agendar': typeof TreinarMuaythaiAgendarRoute
+  '/treinar/personal/agendar': typeof TreinarPersonalAgendarRoute
+  '/treinar/muaythai/': typeof TreinarMuaythaiIndexRoute
+  '/treinar/personal/': typeof TreinarPersonalIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -80,13 +114,19 @@ export interface FileRouteTypes {
     | '/treinar/personal'
     | '/treinar/turma'
     | '/treinar/'
+    | '/treinar/muaythai/agendar'
+    | '/treinar/personal/agendar'
+    | '/treinar/muaythai/'
+    | '/treinar/personal/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/treinar/muaythai'
-    | '/treinar/personal'
     | '/treinar/turma'
     | '/treinar'
+    | '/treinar/muaythai/agendar'
+    | '/treinar/personal/agendar'
+    | '/treinar/muaythai'
+    | '/treinar/personal'
   id:
     | '__root__'
     | '/'
@@ -95,6 +135,10 @@ export interface FileRouteTypes {
     | '/treinar/personal'
     | '/treinar/turma'
     | '/treinar/'
+    | '/treinar/muaythai/agendar'
+    | '/treinar/personal/agendar'
+    | '/treinar/muaythai/'
+    | '/treinar/personal/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -146,19 +190,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TreinarMuaythaiRouteImport
       parentRoute: typeof TreinarRoute
     }
+    '/treinar/personal/': {
+      id: '/treinar/personal/'
+      path: '/'
+      fullPath: '/treinar/personal/'
+      preLoaderRoute: typeof TreinarPersonalIndexRouteImport
+      parentRoute: typeof TreinarPersonalRoute
+    }
+    '/treinar/muaythai/': {
+      id: '/treinar/muaythai/'
+      path: '/'
+      fullPath: '/treinar/muaythai/'
+      preLoaderRoute: typeof TreinarMuaythaiIndexRouteImport
+      parentRoute: typeof TreinarMuaythaiRoute
+    }
+    '/treinar/personal/agendar': {
+      id: '/treinar/personal/agendar'
+      path: '/agendar'
+      fullPath: '/treinar/personal/agendar'
+      preLoaderRoute: typeof TreinarPersonalAgendarRouteImport
+      parentRoute: typeof TreinarPersonalRoute
+    }
+    '/treinar/muaythai/agendar': {
+      id: '/treinar/muaythai/agendar'
+      path: '/agendar'
+      fullPath: '/treinar/muaythai/agendar'
+      preLoaderRoute: typeof TreinarMuaythaiAgendarRouteImport
+      parentRoute: typeof TreinarMuaythaiRoute
+    }
   }
 }
 
+interface TreinarMuaythaiRouteChildren {
+  TreinarMuaythaiAgendarRoute: typeof TreinarMuaythaiAgendarRoute
+  TreinarMuaythaiIndexRoute: typeof TreinarMuaythaiIndexRoute
+}
+
+const TreinarMuaythaiRouteChildren: TreinarMuaythaiRouteChildren = {
+  TreinarMuaythaiAgendarRoute: TreinarMuaythaiAgendarRoute,
+  TreinarMuaythaiIndexRoute: TreinarMuaythaiIndexRoute,
+}
+
+const TreinarMuaythaiRouteWithChildren = TreinarMuaythaiRoute._addFileChildren(
+  TreinarMuaythaiRouteChildren,
+)
+
+interface TreinarPersonalRouteChildren {
+  TreinarPersonalAgendarRoute: typeof TreinarPersonalAgendarRoute
+  TreinarPersonalIndexRoute: typeof TreinarPersonalIndexRoute
+}
+
+const TreinarPersonalRouteChildren: TreinarPersonalRouteChildren = {
+  TreinarPersonalAgendarRoute: TreinarPersonalAgendarRoute,
+  TreinarPersonalIndexRoute: TreinarPersonalIndexRoute,
+}
+
+const TreinarPersonalRouteWithChildren = TreinarPersonalRoute._addFileChildren(
+  TreinarPersonalRouteChildren,
+)
+
 interface TreinarRouteChildren {
-  TreinarMuaythaiRoute: typeof TreinarMuaythaiRoute
-  TreinarPersonalRoute: typeof TreinarPersonalRoute
+  TreinarMuaythaiRoute: typeof TreinarMuaythaiRouteWithChildren
+  TreinarPersonalRoute: typeof TreinarPersonalRouteWithChildren
   TreinarTurmaRoute: typeof TreinarTurmaRoute
   TreinarIndexRoute: typeof TreinarIndexRoute
 }
 
 const TreinarRouteChildren: TreinarRouteChildren = {
-  TreinarMuaythaiRoute: TreinarMuaythaiRoute,
-  TreinarPersonalRoute: TreinarPersonalRoute,
+  TreinarMuaythaiRoute: TreinarMuaythaiRouteWithChildren,
+  TreinarPersonalRoute: TreinarPersonalRouteWithChildren,
   TreinarTurmaRoute: TreinarTurmaRoute,
   TreinarIndexRoute: TreinarIndexRoute,
 }
