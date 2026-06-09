@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Instagram, Dumbbell, Flame, Laptop, ArrowRight } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useReveal } from "@/hooks/use-reveal";
@@ -96,15 +96,13 @@ function Hero() {
           Muay Thai Coach
         </p>
         <div className="mt-6 h-[3px] w-24 bg-primary" />
-        <a
-          href={WHATSAPP}
-          target="_blank"
-          rel="noreferrer noopener"
+        <Link
+          to="/treinar"
           className="group mt-12 inline-flex items-center gap-3 bg-primary px-8 py-4 font-display text-lg font-bold uppercase tracking-widest text-primary-foreground transition hover:bg-[oklch(0.595_0.225_27.5)]"
         >
           Quero Treinar
           <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
-        </a>
+        </Link>
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[0.4em] text-muted-foreground/60">
