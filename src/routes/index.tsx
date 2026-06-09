@@ -216,15 +216,13 @@ function CTAFooter() {
         <p className="mt-5 text-lg opacity-90 sm:text-xl">
           Entre em contato e comece agora.
         </p>
-        <a
-          href={WHATSAPP}
-          target="_blank"
-          rel="noreferrer noopener"
+        <Link
+          to="/treinar"
           className="mt-10 inline-flex items-center gap-3 bg-white px-6 py-4 font-display text-base font-bold uppercase tracking-wide text-primary transition hover:bg-white/90"
         >
-          Fale comigo pelo WhatsApp
+          Ver planos e valores
           <ArrowRight className="h-5 w-5" />
-        </a>
+        </Link>
       </div>
     </section>
   );
