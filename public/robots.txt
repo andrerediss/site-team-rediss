@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rediss.cloud/sitemap.xml
+Sitemap: https://andrerediss.com/sitemap.xml
