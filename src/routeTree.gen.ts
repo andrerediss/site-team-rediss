@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TreinarRouteImport } from './routes/treinar'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TreinarIndexRouteImport } from './routes/treinar/index'
+import { Route as TreinarTurmaRouteImport } from './routes/treinar/turma'
+import { Route as TreinarPersonalRouteImport } from './routes/treinar/personal'
+import { Route as TreinarMuaythaiRouteImport } from './routes/treinar/muaythai'
 
 const TreinarRoute = TreinarRouteImport.update({
   id: '/treinar',
@@ -22,31 +26,80 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TreinarIndexRoute = TreinarIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => TreinarRoute,
+} as any)
+const TreinarTurmaRoute = TreinarTurmaRouteImport.update({
+  id: '/turma',
+  path: '/turma',
+  getParentRoute: () => TreinarRoute,
+} as any)
+const TreinarPersonalRoute = TreinarPersonalRouteImport.update({
+  id: '/personal',
+  path: '/personal',
+  getParentRoute: () => TreinarRoute,
+} as any)
+const TreinarMuaythaiRoute = TreinarMuaythaiRouteImport.update({
+  id: '/muaythai',
+  path: '/muaythai',
+  getParentRoute: () => TreinarRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/treinar': typeof TreinarRoute
+  '/treinar': typeof TreinarRouteWithChildren
+  '/treinar/muaythai': typeof TreinarMuaythaiRoute
+  '/treinar/personal': typeof TreinarPersonalRoute
+  '/treinar/turma': typeof TreinarTurmaRoute
+  '/treinar/': typeof TreinarIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/treinar': typeof TreinarRoute
+  '/treinar/muaythai': typeof TreinarMuaythaiRoute
+  '/treinar/personal': typeof TreinarPersonalRoute
+  '/treinar/turma': typeof TreinarTurmaRoute
+  '/treinar': typeof TreinarIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/treinar': typeof TreinarRoute
+  '/treinar': typeof TreinarRouteWithChildren
+  '/treinar/muaythai': typeof TreinarMuaythaiRoute
+  '/treinar/personal': typeof TreinarPersonalRoute
+  '/treinar/turma': typeof TreinarTurmaRoute
+  '/treinar/': typeof TreinarIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/treinar'
+  fullPaths:
+    | '/'
+    | '/treinar'
+    | '/treinar/muaythai'
+    | '/treinar/personal'
+    | '/treinar/turma'
+    | '/treinar/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/treinar'
-  id: '__root__' | '/' | '/treinar'
+  to:
+    | '/'
+    | '/treinar/muaythai'
+    | '/treinar/personal'
+    | '/treinar/turma'
+    | '/treinar'
+  id:
+    | '__root__'
+    | '/'
+    | '/treinar'
+    | '/treinar/muaythai'
+    | '/treinar/personal'
+    | '/treinar/turma'
+    | '/treinar/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  TreinarRoute: typeof TreinarRoute
+  TreinarRoute: typeof TreinarRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +118,57 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/treinar/': {
+      id: '/treinar/'
+      path: '/'
+      fullPath: '/treinar/'
+      preLoaderRoute: typeof TreinarIndexRouteImport
+      parentRoute: typeof TreinarRoute
+    }
+    '/treinar/turma': {
+      id: '/treinar/turma'
+      path: '/turma'
+      fullPath: '/treinar/turma'
+      preLoaderRoute: typeof TreinarTurmaRouteImport
+      parentRoute: typeof TreinarRoute
+    }
+    '/treinar/personal': {
+      id: '/treinar/personal'
+      path: '/personal'
+      fullPath: '/treinar/personal'
+      preLoaderRoute: typeof TreinarPersonalRouteImport
+      parentRoute: typeof TreinarRoute
+    }
+    '/treinar/muaythai': {
+      id: '/treinar/muaythai'
+      path: '/muaythai'
+      fullPath: '/treinar/muaythai'
+      preLoaderRoute: typeof TreinarMuaythaiRouteImport
+      parentRoute: typeof TreinarRoute
+    }
   }
 }
 
+interface TreinarRouteChildren {
+  TreinarMuaythaiRoute: typeof TreinarMuaythaiRoute
+  TreinarPersonalRoute: typeof TreinarPersonalRoute
+  TreinarTurmaRoute: typeof TreinarTurmaRoute
+  TreinarIndexRoute: typeof TreinarIndexRoute
+}
+
+const TreinarRouteChildren: TreinarRouteChildren = {
+  TreinarMuaythaiRoute: TreinarMuaythaiRoute,
+  TreinarPersonalRoute: TreinarPersonalRoute,
+  TreinarTurmaRoute: TreinarTurmaRoute,
+  TreinarIndexRoute: TreinarIndexRoute,
+}
+
+const TreinarRouteWithChildren =
+  TreinarRoute._addFileChildren(TreinarRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  TreinarRoute: TreinarRoute,
+  TreinarRoute: TreinarRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
