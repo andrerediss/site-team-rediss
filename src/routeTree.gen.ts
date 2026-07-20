@@ -9,25 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TreinarRouteImport } from './routes/treinar'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TreinarRouteImport } from './routes/treinar'
 import { Route as TreinarIndexRouteImport } from './routes/treinar/index'
-import { Route as TreinarTurmaRouteImport } from './routes/treinar/turma'
-import { Route as TreinarPersonalRouteImport } from './routes/treinar/personal'
 import { Route as TreinarMuaythaiRouteImport } from './routes/treinar/muaythai'
-import { Route as TreinarPersonalIndexRouteImport } from './routes/treinar/personal/index'
+import { Route as TreinarPersonalRouteImport } from './routes/treinar/personal'
+import { Route as TreinarTurmaRouteImport } from './routes/treinar/turma'
 import { Route as TreinarMuaythaiIndexRouteImport } from './routes/treinar/muaythai/index'
-import { Route as TreinarPersonalAgendarRouteImport } from './routes/treinar/personal/agendar'
 import { Route as TreinarMuaythaiAgendarRouteImport } from './routes/treinar/muaythai/agendar'
+import { Route as TreinarPersonalIndexRouteImport } from './routes/treinar/personal/index'
+import { Route as TreinarPersonalAgendarRouteImport } from './routes/treinar/personal/agendar'
 
-const TreinarRoute = TreinarRouteImport.update({
-  id: '/treinar',
-  path: '/treinar',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TreinarRoute = TreinarRouteImport.update({
+  id: '/treinar',
+  path: '/treinar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TreinarIndexRoute = TreinarIndexRouteImport.update({
@@ -35,9 +35,9 @@ const TreinarIndexRoute = TreinarIndexRouteImport.update({
   path: '/',
   getParentRoute: () => TreinarRoute,
 } as any)
-const TreinarTurmaRoute = TreinarTurmaRouteImport.update({
-  id: '/turma',
-  path: '/turma',
+const TreinarMuaythaiRoute = TreinarMuaythaiRouteImport.update({
+  id: '/muaythai',
+  path: '/muaythai',
   getParentRoute: () => TreinarRoute,
 } as any)
 const TreinarPersonalRoute = TreinarPersonalRouteImport.update({
@@ -45,30 +45,30 @@ const TreinarPersonalRoute = TreinarPersonalRouteImport.update({
   path: '/personal',
   getParentRoute: () => TreinarRoute,
 } as any)
-const TreinarMuaythaiRoute = TreinarMuaythaiRouteImport.update({
-  id: '/muaythai',
-  path: '/muaythai',
+const TreinarTurmaRoute = TreinarTurmaRouteImport.update({
+  id: '/turma',
+  path: '/turma',
   getParentRoute: () => TreinarRoute,
-} as any)
-const TreinarPersonalIndexRoute = TreinarPersonalIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => TreinarPersonalRoute,
 } as any)
 const TreinarMuaythaiIndexRoute = TreinarMuaythaiIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => TreinarMuaythaiRoute,
 } as any)
-const TreinarPersonalAgendarRoute = TreinarPersonalAgendarRouteImport.update({
-  id: '/agendar',
-  path: '/agendar',
-  getParentRoute: () => TreinarPersonalRoute,
-} as any)
 const TreinarMuaythaiAgendarRoute = TreinarMuaythaiAgendarRouteImport.update({
   id: '/agendar',
   path: '/agendar',
   getParentRoute: () => TreinarMuaythaiRoute,
+} as any)
+const TreinarPersonalIndexRoute = TreinarPersonalIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => TreinarPersonalRoute,
+} as any)
+const TreinarPersonalAgendarRoute = TreinarPersonalAgendarRouteImport.update({
+  id: '/agendar',
+  path: '/agendar',
+  getParentRoute: () => TreinarPersonalRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -148,18 +148,18 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/treinar': {
-      id: '/treinar'
-      path: '/treinar'
-      fullPath: '/treinar'
-      preLoaderRoute: typeof TreinarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/treinar': {
+      id: '/treinar'
+      path: '/treinar'
+      fullPath: '/treinar'
+      preLoaderRoute: typeof TreinarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/treinar/': {
@@ -169,11 +169,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TreinarIndexRouteImport
       parentRoute: typeof TreinarRoute
     }
-    '/treinar/turma': {
-      id: '/treinar/turma'
-      path: '/turma'
-      fullPath: '/treinar/turma'
-      preLoaderRoute: typeof TreinarTurmaRouteImport
+    '/treinar/muaythai': {
+      id: '/treinar/muaythai'
+      path: '/muaythai'
+      fullPath: '/treinar/muaythai'
+      preLoaderRoute: typeof TreinarMuaythaiRouteImport
       parentRoute: typeof TreinarRoute
     }
     '/treinar/personal': {
@@ -183,19 +183,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TreinarPersonalRouteImport
       parentRoute: typeof TreinarRoute
     }
-    '/treinar/muaythai': {
-      id: '/treinar/muaythai'
-      path: '/muaythai'
-      fullPath: '/treinar/muaythai'
-      preLoaderRoute: typeof TreinarMuaythaiRouteImport
+    '/treinar/turma': {
+      id: '/treinar/turma'
+      path: '/turma'
+      fullPath: '/treinar/turma'
+      preLoaderRoute: typeof TreinarTurmaRouteImport
       parentRoute: typeof TreinarRoute
-    }
-    '/treinar/personal/': {
-      id: '/treinar/personal/'
-      path: '/'
-      fullPath: '/treinar/personal/'
-      preLoaderRoute: typeof TreinarPersonalIndexRouteImport
-      parentRoute: typeof TreinarPersonalRoute
     }
     '/treinar/muaythai/': {
       id: '/treinar/muaythai/'
@@ -204,19 +197,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TreinarMuaythaiIndexRouteImport
       parentRoute: typeof TreinarMuaythaiRoute
     }
-    '/treinar/personal/agendar': {
-      id: '/treinar/personal/agendar'
-      path: '/agendar'
-      fullPath: '/treinar/personal/agendar'
-      preLoaderRoute: typeof TreinarPersonalAgendarRouteImport
-      parentRoute: typeof TreinarPersonalRoute
-    }
     '/treinar/muaythai/agendar': {
       id: '/treinar/muaythai/agendar'
       path: '/agendar'
       fullPath: '/treinar/muaythai/agendar'
       preLoaderRoute: typeof TreinarMuaythaiAgendarRouteImport
       parentRoute: typeof TreinarMuaythaiRoute
+    }
+    '/treinar/personal/': {
+      id: '/treinar/personal/'
+      path: '/'
+      fullPath: '/treinar/personal/'
+      preLoaderRoute: typeof TreinarPersonalIndexRouteImport
+      parentRoute: typeof TreinarPersonalRoute
+    }
+    '/treinar/personal/agendar': {
+      id: '/treinar/personal/agendar'
+      path: '/agendar'
+      fullPath: '/treinar/personal/agendar'
+      preLoaderRoute: typeof TreinarPersonalAgendarRouteImport
+      parentRoute: typeof TreinarPersonalRoute
     }
   }
 }
