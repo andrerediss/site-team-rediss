@@ -10,7 +10,7 @@ export const Route = createFileRoute("/treinar/turma/ct-ishigeki/")({
       {
         name: "description",
         content:
-          "Nova turma de Muay Thai no CT Ishigeki, em Guaíba - RS. Início em setembro, aulas às terças e quintas, 20:30. Garanta sua vaga.",
+          "Nova turma de Muay Thai no CT Ishigeki, em Guaíba - RS. Início em setembro, aulas às terças e quintas, 20:30. R$149/mês. Garanta sua vaga.",
       },
     ],
   }),
@@ -18,6 +18,7 @@ export const Route = createFileRoute("/treinar/turma/ct-ishigeki/")({
 
 function TurmaCtIshigekiPage() {
   const heroRef = useReveal<HTMLDivElement>();
+  const valorRef = useReveal<HTMLDivElement>();
   const horarioRef = useReveal<HTMLDivElement>();
   const localRef = useReveal<HTMLDivElement>();
 
@@ -53,6 +54,38 @@ function TurmaCtIshigekiPage() {
       </div>
 
       <section className="mx-auto max-w-lg px-6 pb-6 pt-12">
+        <div ref={valorRef} className="fade-up">
+          <span className="font-display text-xs uppercase tracking-[0.4em] text-primary">
+            Mensalidade
+          </span>
+          <h2 className="mt-2 font-display text-2xl font-black uppercase">Valor do plano</h2>
+          <div className="mt-6 border border-border/50 bg-card px-8 py-10 text-center">
+            <p className="font-display text-xs uppercase tracking-[0.4em] text-muted-foreground">
+              Turma — por aluno
+            </p>
+            <p className="mt-4 font-display text-6xl leading-none font-black text-primary">R$149</p>
+            <p className="mt-2 text-sm text-muted-foreground">por mês</p>
+            <div className="mt-6 space-y-2 border-t border-border/30 pt-6 text-left">
+              {[
+                "Aulas às terças e quintas, 20:30",
+                "Técnica de Muay Thai do zero ao avançado",
+                "Condicionamento físico incluso",
+                "Acompanhamento do Professor André Rediss",
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <span className="mt-0.5 font-bold text-primary">✓</span>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+          <p className="mt-3 text-center text-xs text-muted-foreground/60">
+            Valor cobrado mensalmente · CREF 040046-G/RS
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-lg px-6 py-6">
         <div
           ref={horarioRef}
           className="fade-up border border-border/50 border-l-2 border-l-primary bg-card px-6 py-6"
