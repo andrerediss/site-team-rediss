@@ -17,20 +17,35 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "André Rediss — Personal Trainer & Muay Thai Coach" },
-      { name: "description", content: "Personal Trainer e Treinador de Muay Thai em Guaíba e região. Mais de 27 anos de Artes Marciais. Especialista em Musculação e Estética Corporal. Treino com método e resultado real." },
-      { name: "keywords", content: "personal trainer Guaíba, personal trainer Porto Alegre, personal trainer Rio Grande do Sul, personal trainer online, Muay Thai Guaíba, musculação Guaíba, treino funcional Guaíba, emagrecimento Guaíba, hipertrofia, definição muscular, estética corporal, bodybuilding, condicionamento físico, perda de peso, ganho de massa muscular, treino para emagrecer, treino para mulheres, treino para homens, saúde e bem estar, qualidade de vida, performance esportiva, lutas Guaíba, artes marciais Guaíba, defesa pessoal, Muay Thai iniciante, kickboxing, treino de luta, academia de lutas, arte marcial para adultos, arte marcial para crianças, educação física, pós-graduação bodybuilding, professor de lutas, treinador profissional, André Rediss, Team Rediss, treino online, academia Porto Alegre Sul" },
+      { title: "André Rediss — Personal Trainer & Muay Thai Coach em Guaíba" },
+      {
+        name: "description",
+        content:
+          "Personal Trainer e Treinador de Muay Thai em Guaíba e região. Mais de 27 anos de Artes Marciais. Especialista em Musculação e Estética Corporal. Treino com método e resultado real.",
+      },
+      {
+        name: "keywords",
+        content:
+          "personal trainer Guaíba, personal trainer Porto Alegre, personal trainer Rio Grande do Sul, personal trainer online, Muay Thai Guaíba, musculação Guaíba, treino funcional Guaíba, emagrecimento Guaíba, hipertrofia, definição muscular, estética corporal, bodybuilding, condicionamento físico, perda de peso, ganho de massa muscular, treino para emagrecer, treino para mulheres, treino para homens, saúde e bem estar, qualidade de vida, performance esportiva, lutas Guaíba, artes marciais Guaíba, defesa pessoal, Muay Thai iniciante, kickboxing, treino de luta, academia de lutas, arte marcial para adultos, arte marcial para crianças, educação física, pós-graduação bodybuilding, professor de lutas, treinador profissional, André Rediss, Team Rediss, treino online, academia Porto Alegre Sul",
+      },
       { name: "author", content: "André Rediss" },
       { name: "geo.region", content: "BR-RS" },
       { name: "geo.placename", content: "Guaíba, Rio Grande do Sul" },
       { property: "og:title", content: "André Rediss — Personal Trainer & Muay Thai Coach" },
-      { property: "og:description", content: "Muay Thai com quem viveu o esporte. Musculação com quem estudou a fundo. Performance, saúde e estética em Guaíba e região." },
+      {
+        property: "og:description",
+        content:
+          "Muay Thai com quem viveu o esporte. Musculação com quem estudou a fundo. Performance, saúde e estética em Guaíba e região.",
+      },
       { property: "og:image", content: "https://andrerediss.com/logo.png" },
       { property: "og:url", content: "https://andrerediss.com" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "André Rediss — Personal Trainer & Muay Thai Coach" },
-      { name: "twitter:description", content: "Muay Thai com quem viveu o esporte. Musculação com quem estudou a fundo." },
+      {
+        name: "twitter:description",
+        content: "Muay Thai com quem viveu o esporte. Musculação com quem estudou a fundo.",
+      },
       { name: "twitter:image", content: "https://andrerediss.com/logo.png" },
     ],
     links: [{ rel: "canonical", href: "https://andrerediss.com" }],
@@ -121,18 +136,24 @@ function Bio() {
       <div ref={ref} className="fade-up mx-auto max-w-2xl text-center">
         <span className="font-display text-sm uppercase tracking-[0.4em] text-primary">Sobre</span>
         <p className="mt-6 font-display text-2xl font-bold uppercase leading-snug sm:text-3xl md:text-4xl">
-          Mais de {yearsOfPractice} anos de Artes Marciais. Especialista em Musculação e Estética Corporal.
+          Mais de {yearsOfPractice} anos de Artes Marciais. Especialista em Musculação e Estética
+          Corporal.
         </p>
         <p className="mt-6 text-base text-muted-foreground sm:text-lg">
-          Fui atleta. Treinei atletas e formei professores.
-          Hoje treino pessoas que buscam a sua melhor versão, dentro e fora do tatame.
+          Fui atleta. Treinei atletas e formei professores. Hoje treino pessoas que buscam a sua
+          melhor versão, dentro e fora do tatame.
         </p>
         <p className="mt-4 text-base text-muted-foreground sm:text-lg">
-          Profissional de Educação Física, pós-graduado em Bodybuilding e Estética Corporal pelos melhores professores do Brasil.
+          Profissional de Educação Física, pós-graduado em Bodybuilding e Estética Corporal pelos
+          melhores professores do Brasil.
         </p>
         <p className="mt-4 text-base text-muted-foreground sm:text-lg">
-          Muay Thai com quem viveu o esporte. Musculação com quem estudou a fundo.
-          Se você busca performance, saúde ou estética, você está no lugar certo.
+          Muay Thai com quem viveu o esporte. Musculação com quem estudou a fundo. Se você busca
+          performance, saúde ou estética, você está no lugar certo.
+        </p>
+        <p className="mt-4 text-base text-muted-foreground sm:text-lg">
+          Atendo presencialmente em Guaíba — RS e região metropolitana de Porto Alegre, com opção de
+          acompanhamento 100% online para todo o Brasil.
         </p>
       </div>
     </section>
@@ -165,7 +186,9 @@ function Services() {
     <section className="border-t border-border/50 bg-[oklch(0.04_0_0)] px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <div ref={ref} className="fade-up mb-14 text-center">
-          <span className="font-display text-sm uppercase tracking-[0.4em] text-primary">Serviços</span>
+          <span className="font-display text-sm uppercase tracking-[0.4em] text-primary">
+            Serviços
+          </span>
           <h2 className="mt-3 font-display text-4xl font-black uppercase sm:text-5xl">
             Treine com quem entrega resultado
           </h2>
@@ -213,9 +236,7 @@ function CTAFooter() {
         <h2 className="font-display text-5xl font-black uppercase leading-none sm:text-6xl md:text-7xl">
           Pronto para evoluir?
         </h2>
-        <p className="mt-5 text-lg opacity-90 sm:text-xl">
-          Entre em contato e comece agora.
-        </p>
+        <p className="mt-5 text-lg opacity-90 sm:text-xl">Entre em contato e comece agora.</p>
         <Link
           to="/treinar"
           className="mt-10 inline-flex items-center gap-3 bg-white px-6 py-4 font-display text-base font-bold uppercase tracking-wide text-primary transition hover:bg-white/90"

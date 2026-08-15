@@ -66,6 +66,33 @@ function RootShell({ children }: { children: React.ReactNode }) {
             `,
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "André Rediss",
+              url: "https://andrerediss.com",
+              image: "https://andrerediss.com/logo.png",
+              jobTitle: "Personal Trainer & Muay Thai Coach",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Guaíba",
+                addressRegion: "RS",
+                addressCountry: "BR",
+              },
+              sameAs: ["https://instagram.com/andrerediss"],
+              knowsAbout: [
+                "Personal Trainer",
+                "Muay Thai",
+                "Musculação",
+                "Artes Marciais",
+                "Estética Corporal",
+              ],
+            }),
+          }}
+        />
       </head>
       <body>
         {children}
