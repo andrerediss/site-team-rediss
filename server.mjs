@@ -18,6 +18,13 @@ const MIME = {
 
 async function fetchWithStatic(request) {
   const url = new URL(request.url);
+
+  if (url.hostname.toLowerCase() === "www.andrerediss.com") {
+    url.hostname = "andrerediss.com";
+    url.protocol = "https:";
+    return Response.redirect(url, 301);
+  }
+
   const filePath = join(CLIENT_DIR, url.pathname);
 
   try {
