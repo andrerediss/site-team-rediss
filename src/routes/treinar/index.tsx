@@ -7,7 +7,11 @@ export const Route = createFileRoute("/treinar/")({
   head: () => ({
     meta: [
       { title: "Escolha seu Treino — André Rediss" },
-      { name: "description", content: "Personal Trainer, Muay Thai individual ou em turma. Veja valores, localização e agende seu treino com André Rediss em Guaíba - RS." },
+      {
+        name: "description",
+        content:
+          "Personal Trainer, Muay Thai individual ou em turma. Veja valores, localização e agende seu treino com André Rediss em Guaíba - RS.",
+      },
     ],
   }),
 });
@@ -31,7 +35,7 @@ const services = [
     to: "/treinar/turma",
     icon: Users,
     label: "Muay Thai Turma",
-    desc: "Turma reduzida com até 5 alunos. Ambiente motivador e técnica sólida.",
+    desc: "Studio Top Fitness ou a nova turma no CT Ishigeki, a partir de setembro.",
     tag: "Turma",
   },
 ];
@@ -40,7 +44,10 @@ function TreinarPage() {
   const titleRef = useReveal<HTMLDivElement>();
 
   return (
-    <main className="min-h-screen bg-background text-foreground" style={{ background: "var(--gradient-dark)" }}>
+    <main
+      className="min-h-screen bg-background text-foreground"
+      style={{ background: "var(--gradient-dark)" }}
+    >
       <div className="px-6 pt-8">
         <Link
           to="/"

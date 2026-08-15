@@ -1,46 +1,33 @@
 import { useState, type FormEvent } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, CheckCircle2, ChevronLeft, Clock3, Users } from "lucide-react";
+import { ArrowRight, CalendarDays, CheckCircle2, ChevronLeft } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
-export const Route = createFileRoute("/treinar/turma/interesse")({
-  component: InteresseTurmaPage,
+export const Route = createFileRoute("/treinar/turma/ct-ishigeki/interesse")({
+  component: InteresseCtIshigekiPage,
   head: () => ({
     meta: [
-      { title: "Lista de Interesse — Muay Thai Turma — André Rediss" },
+      { title: "Garantir Vaga — Muay Thai Turma — CT Ishigeki — André Rediss" },
       {
         name: "description",
-        content: "Entre na lista de interesse para a próxima turma de Muay Thai em Guaíba - RS.",
+        content:
+          "Garanta sua vaga na nova turma de Muay Thai no CT Ishigeki, em Guaíba - RS. Início em setembro, terças e quintas às 20:30.",
       },
     ],
   }),
 });
 
-const interesseEndpoint = "https://n8n.marcaki.com/webhook/interesse/turma";
+const interesseEndpoint = "https://n8n.marcaki.com/webhook/interesse/turma-ishigeki";
 
 type SubmissionState = "idle" | "submitting" | "success" | "error";
 
-function InteresseTurmaPage() {
+function InteresseCtIshigekiPage() {
   const headerRef = useReveal<HTMLDivElement>();
   const [state, setState] = useState<SubmissionState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [turnoInteresse, setTurnoInteresse] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!turnoInteresse) {
-      setErrorMessage("Selecione o turno de interesse.");
-      setState("error");
-      return;
-    }
-
     setState("submitting");
     setErrorMessage("");
 
@@ -49,7 +36,6 @@ function InteresseTurmaPage() {
       nome: String(formData.get("nome") ?? "").trim(),
       whatsapp: String(formData.get("whatsapp") ?? "").trim(),
       idade: Number(formData.get("idade")),
-      turnoInteresse,
     };
 
     try {
@@ -64,13 +50,13 @@ function InteresseTurmaPage() {
       } | null;
 
       if (!response.ok || !result?.success) {
-        throw new Error(result?.message ?? "Não foi possível registrar seu interesse.");
+        throw new Error(result?.message ?? "Não foi possível registrar sua pré-inscrição.");
       }
 
       setState("success");
     } catch (error) {
       setErrorMessage(
-        error instanceof Error ? error.message : "Não foi possível registrar seu interesse.",
+        error instanceof Error ? error.message : "Não foi possível registrar sua pré-inscrição.",
       );
       setState("error");
     }
@@ -80,7 +66,7 @@ function InteresseTurmaPage() {
     <main className="min-h-screen bg-background text-foreground">
       <div className="px-6 pt-8">
         <Link
-          to="/treinar/turma"
+          to="/treinar/turma/ct-ishigeki"
           className="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-muted-foreground transition hover:text-foreground"
         >
           <ChevronLeft className="h-4 w-4" />
@@ -90,17 +76,17 @@ function InteresseTurmaPage() {
 
       <div ref={headerRef} className="fade-up mx-auto max-w-lg px-6 pb-8 pt-12 text-center">
         <div className="mx-auto flex h-16 w-16 items-center justify-center border border-primary/40 bg-primary/10 text-primary">
-          <Clock3 className="h-8 w-8" strokeWidth={1.5} />
+          <CalendarDays className="h-8 w-8" strokeWidth={1.5} />
         </div>
         <p className="mt-6 font-display text-xs uppercase tracking-[0.35em] text-primary">
-          Turma em formação
+          Turma confirmada · Início em setembro
         </p>
         <h1 className="mt-2 font-display text-4xl font-black uppercase leading-none sm:text-5xl">
-          Em breve
+          Garanta sua vaga
         </h1>
         <p className="mx-auto mt-4 max-w-md text-muted-foreground">
-          As vagas serão limitadas. Deixe seu interesse para receber as informações da próxima turma
-          antes da abertura.
+          Terças e quintas, 20:30, no CT Ishigeki. Vagas limitadas — preencha seus dados e
+          entraremos em contato para confirmar sua matrícula.
         </p>
       </div>
 
@@ -109,14 +95,14 @@ function InteresseTurmaPage() {
           <div className="border border-primary/40 border-l-2 border-l-primary bg-card px-6 py-10 text-center">
             <CheckCircle2 className="mx-auto h-11 w-11 text-primary" strokeWidth={1.5} />
             <h2 className="mt-5 font-display text-3xl font-black uppercase">
-              Interesse registrado
+              Pré-inscrição registrada
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Você entrou na lista da turma. Quando as vagas estiverem disponíveis, entraremos em
-              contato.
+              Você garantiu sua vaga na lista de pré-inscritos da turma do CT Ishigeki. Entraremos
+              em contato para confirmar os detalhes da matrícula.
             </p>
             <Link
-              to="/treinar/turma"
+              to="/treinar/turma/ct-ishigeki"
               className="mt-8 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-primary transition hover:text-foreground"
             >
               Voltar para a turma
@@ -126,9 +112,9 @@ function InteresseTurmaPage() {
         ) : (
           <div className="border border-border/50 bg-card px-6 py-7 sm:px-8">
             <div className="flex items-start gap-3 border-b border-border/30 pb-6">
-              <Users className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+              <CalendarDays className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
               <div>
-                <h2 className="font-display text-xl font-black uppercase">Lista de interessados</h2>
+                <h2 className="font-display text-xl font-black uppercase">Pré-inscrição</h2>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Preencha seus dados. Leva menos de um minuto.
                 </p>
@@ -167,43 +153,21 @@ function InteresseTurmaPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="idade" className="text-sm font-medium">
-                    Idade
-                  </label>
-                  <input
-                    id="idade"
-                    name="idade"
-                    type="number"
-                    required
-                    min={1}
-                    max={100}
-                    inputMode="numeric"
-                    className="mt-2 h-11 w-full border border-input bg-background px-3 text-base outline-none transition focus:border-primary focus:ring-1 focus:ring-primary"
-                    placeholder="Ex.: 30"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="turnoInteresse" className="text-sm font-medium">
-                    Turno de interesse
-                  </label>
-                  <Select value={turnoInteresse} onValueChange={setTurnoInteresse}>
-                    <SelectTrigger
-                      id="turnoInteresse"
-                      aria-label="Turno de interesse"
-                      className="mt-2 h-11 rounded-none border-input bg-background px-3 text-base focus:ring-primary"
-                    >
-                      <SelectValue placeholder="Selecione" />
-                    </SelectTrigger>
-                    <SelectContent className="rounded-none border-border bg-popover text-popover-foreground">
-                      <SelectItem value="manha">Manhã</SelectItem>
-                      <SelectItem value="tarde">Tarde</SelectItem>
-                      <SelectItem value="noite">Noite</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div>
+                <label htmlFor="idade" className="text-sm font-medium">
+                  Idade
+                </label>
+                <input
+                  id="idade"
+                  name="idade"
+                  type="number"
+                  required
+                  min={1}
+                  max={100}
+                  inputMode="numeric"
+                  className="mt-2 h-11 w-full border border-input bg-background px-3 text-base outline-none transition focus:border-primary focus:ring-1 focus:ring-primary"
+                  placeholder="Ex.: 30"
+                />
               </div>
 
               {state === "error" && (
@@ -220,7 +184,7 @@ function InteresseTurmaPage() {
                 disabled={state === "submitting"}
                 className="group flex w-full items-center justify-between bg-primary px-5 py-4 font-display text-base font-bold uppercase tracking-widest text-primary-foreground transition hover:bg-[oklch(0.595_0.225_27.5)] disabled:cursor-wait disabled:opacity-70"
               >
-                {state === "submitting" ? "Registrando..." : "Entrar na lista"}
+                {state === "submitting" ? "Registrando..." : "Garantir vaga"}
                 <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
               </button>
             </form>

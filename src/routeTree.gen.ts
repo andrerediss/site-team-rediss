@@ -20,7 +20,12 @@ import { Route as TreinarMuaythaiAgendarRouteImport } from './routes/treinar/mua
 import { Route as TreinarPersonalIndexRouteImport } from './routes/treinar/personal/index'
 import { Route as TreinarPersonalAgendarRouteImport } from './routes/treinar/personal/agendar'
 import { Route as TreinarTurmaIndexRouteImport } from './routes/treinar/turma/index'
-import { Route as TreinarTurmaInteresseRouteImport } from './routes/treinar/turma/interesse'
+import { Route as TreinarTurmaCtIshigekiRouteImport } from './routes/treinar/turma/ct-ishigeki'
+import { Route as TreinarTurmaStudioTopFitnessRouteImport } from './routes/treinar/turma/studio-top-fitness'
+import { Route as TreinarTurmaCtIshigekiIndexRouteImport } from './routes/treinar/turma/ct-ishigeki/index'
+import { Route as TreinarTurmaCtIshigekiInteresseRouteImport } from './routes/treinar/turma/ct-ishigeki/interesse'
+import { Route as TreinarTurmaStudioTopFitnessIndexRouteImport } from './routes/treinar/turma/studio-top-fitness/index'
+import { Route as TreinarTurmaStudioTopFitnessInteresseRouteImport } from './routes/treinar/turma/studio-top-fitness/interesse'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -77,11 +82,41 @@ const TreinarTurmaIndexRoute = TreinarTurmaIndexRouteImport.update({
   path: '/',
   getParentRoute: () => TreinarTurmaRoute,
 } as any)
-const TreinarTurmaInteresseRoute = TreinarTurmaInteresseRouteImport.update({
-  id: '/interesse',
-  path: '/interesse',
+const TreinarTurmaCtIshigekiRoute = TreinarTurmaCtIshigekiRouteImport.update({
+  id: '/ct-ishigeki',
+  path: '/ct-ishigeki',
   getParentRoute: () => TreinarTurmaRoute,
 } as any)
+const TreinarTurmaStudioTopFitnessRoute =
+  TreinarTurmaStudioTopFitnessRouteImport.update({
+    id: '/studio-top-fitness',
+    path: '/studio-top-fitness',
+    getParentRoute: () => TreinarTurmaRoute,
+  } as any)
+const TreinarTurmaCtIshigekiIndexRoute =
+  TreinarTurmaCtIshigekiIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => TreinarTurmaCtIshigekiRoute,
+  } as any)
+const TreinarTurmaCtIshigekiInteresseRoute =
+  TreinarTurmaCtIshigekiInteresseRouteImport.update({
+    id: '/interesse',
+    path: '/interesse',
+    getParentRoute: () => TreinarTurmaCtIshigekiRoute,
+  } as any)
+const TreinarTurmaStudioTopFitnessIndexRoute =
+  TreinarTurmaStudioTopFitnessIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => TreinarTurmaStudioTopFitnessRoute,
+  } as any)
+const TreinarTurmaStudioTopFitnessInteresseRoute =
+  TreinarTurmaStudioTopFitnessInteresseRouteImport.update({
+    id: '/interesse',
+    path: '/interesse',
+    getParentRoute: () => TreinarTurmaStudioTopFitnessRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -92,20 +127,28 @@ export interface FileRoutesByFullPath {
   '/treinar/': typeof TreinarIndexRoute
   '/treinar/muaythai/agendar': typeof TreinarMuaythaiAgendarRoute
   '/treinar/personal/agendar': typeof TreinarPersonalAgendarRoute
-  '/treinar/turma/interesse': typeof TreinarTurmaInteresseRoute
+  '/treinar/turma/ct-ishigeki': typeof TreinarTurmaCtIshigekiRouteWithChildren
+  '/treinar/turma/studio-top-fitness': typeof TreinarTurmaStudioTopFitnessRouteWithChildren
   '/treinar/muaythai/': typeof TreinarMuaythaiIndexRoute
   '/treinar/personal/': typeof TreinarPersonalIndexRoute
   '/treinar/turma/': typeof TreinarTurmaIndexRoute
+  '/treinar/turma/ct-ishigeki/interesse': typeof TreinarTurmaCtIshigekiInteresseRoute
+  '/treinar/turma/studio-top-fitness/interesse': typeof TreinarTurmaStudioTopFitnessInteresseRoute
+  '/treinar/turma/ct-ishigeki/': typeof TreinarTurmaCtIshigekiIndexRoute
+  '/treinar/turma/studio-top-fitness/': typeof TreinarTurmaStudioTopFitnessIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/treinar': typeof TreinarIndexRoute
   '/treinar/muaythai/agendar': typeof TreinarMuaythaiAgendarRoute
   '/treinar/personal/agendar': typeof TreinarPersonalAgendarRoute
-  '/treinar/turma/interesse': typeof TreinarTurmaInteresseRoute
   '/treinar/muaythai': typeof TreinarMuaythaiIndexRoute
   '/treinar/personal': typeof TreinarPersonalIndexRoute
   '/treinar/turma': typeof TreinarTurmaIndexRoute
+  '/treinar/turma/ct-ishigeki/interesse': typeof TreinarTurmaCtIshigekiInteresseRoute
+  '/treinar/turma/studio-top-fitness/interesse': typeof TreinarTurmaStudioTopFitnessInteresseRoute
+  '/treinar/turma/ct-ishigeki': typeof TreinarTurmaCtIshigekiIndexRoute
+  '/treinar/turma/studio-top-fitness': typeof TreinarTurmaStudioTopFitnessIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -117,10 +160,15 @@ export interface FileRoutesById {
   '/treinar/': typeof TreinarIndexRoute
   '/treinar/muaythai/agendar': typeof TreinarMuaythaiAgendarRoute
   '/treinar/personal/agendar': typeof TreinarPersonalAgendarRoute
-  '/treinar/turma/interesse': typeof TreinarTurmaInteresseRoute
+  '/treinar/turma/ct-ishigeki': typeof TreinarTurmaCtIshigekiRouteWithChildren
+  '/treinar/turma/studio-top-fitness': typeof TreinarTurmaStudioTopFitnessRouteWithChildren
   '/treinar/muaythai/': typeof TreinarMuaythaiIndexRoute
   '/treinar/personal/': typeof TreinarPersonalIndexRoute
   '/treinar/turma/': typeof TreinarTurmaIndexRoute
+  '/treinar/turma/ct-ishigeki/interesse': typeof TreinarTurmaCtIshigekiInteresseRoute
+  '/treinar/turma/studio-top-fitness/interesse': typeof TreinarTurmaStudioTopFitnessInteresseRoute
+  '/treinar/turma/ct-ishigeki/': typeof TreinarTurmaCtIshigekiIndexRoute
+  '/treinar/turma/studio-top-fitness/': typeof TreinarTurmaStudioTopFitnessIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -133,20 +181,28 @@ export interface FileRouteTypes {
     | '/treinar/'
     | '/treinar/muaythai/agendar'
     | '/treinar/personal/agendar'
-    | '/treinar/turma/interesse'
+    | '/treinar/turma/ct-ishigeki'
+    | '/treinar/turma/studio-top-fitness'
     | '/treinar/muaythai/'
     | '/treinar/personal/'
     | '/treinar/turma/'
+    | '/treinar/turma/ct-ishigeki/interesse'
+    | '/treinar/turma/studio-top-fitness/interesse'
+    | '/treinar/turma/ct-ishigeki/'
+    | '/treinar/turma/studio-top-fitness/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/treinar'
     | '/treinar/muaythai/agendar'
     | '/treinar/personal/agendar'
-    | '/treinar/turma/interesse'
     | '/treinar/muaythai'
     | '/treinar/personal'
     | '/treinar/turma'
+    | '/treinar/turma/ct-ishigeki/interesse'
+    | '/treinar/turma/studio-top-fitness/interesse'
+    | '/treinar/turma/ct-ishigeki'
+    | '/treinar/turma/studio-top-fitness'
   id:
     | '__root__'
     | '/'
@@ -157,10 +213,15 @@ export interface FileRouteTypes {
     | '/treinar/'
     | '/treinar/muaythai/agendar'
     | '/treinar/personal/agendar'
-    | '/treinar/turma/interesse'
+    | '/treinar/turma/ct-ishigeki'
+    | '/treinar/turma/studio-top-fitness'
     | '/treinar/muaythai/'
     | '/treinar/personal/'
     | '/treinar/turma/'
+    | '/treinar/turma/ct-ishigeki/interesse'
+    | '/treinar/turma/studio-top-fitness/interesse'
+    | '/treinar/turma/ct-ishigeki/'
+    | '/treinar/turma/studio-top-fitness/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -247,12 +308,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TreinarTurmaIndexRouteImport
       parentRoute: typeof TreinarTurmaRoute
     }
-    '/treinar/turma/interesse': {
-      id: '/treinar/turma/interesse'
-      path: '/interesse'
-      fullPath: '/treinar/turma/interesse'
-      preLoaderRoute: typeof TreinarTurmaInteresseRouteImport
+    '/treinar/turma/ct-ishigeki': {
+      id: '/treinar/turma/ct-ishigeki'
+      path: '/ct-ishigeki'
+      fullPath: '/treinar/turma/ct-ishigeki'
+      preLoaderRoute: typeof TreinarTurmaCtIshigekiRouteImport
       parentRoute: typeof TreinarTurmaRoute
+    }
+    '/treinar/turma/studio-top-fitness': {
+      id: '/treinar/turma/studio-top-fitness'
+      path: '/studio-top-fitness'
+      fullPath: '/treinar/turma/studio-top-fitness'
+      preLoaderRoute: typeof TreinarTurmaStudioTopFitnessRouteImport
+      parentRoute: typeof TreinarTurmaRoute
+    }
+    '/treinar/turma/ct-ishigeki/': {
+      id: '/treinar/turma/ct-ishigeki/'
+      path: '/'
+      fullPath: '/treinar/turma/ct-ishigeki/'
+      preLoaderRoute: typeof TreinarTurmaCtIshigekiIndexRouteImport
+      parentRoute: typeof TreinarTurmaCtIshigekiRoute
+    }
+    '/treinar/turma/ct-ishigeki/interesse': {
+      id: '/treinar/turma/ct-ishigeki/interesse'
+      path: '/interesse'
+      fullPath: '/treinar/turma/ct-ishigeki/interesse'
+      preLoaderRoute: typeof TreinarTurmaCtIshigekiInteresseRouteImport
+      parentRoute: typeof TreinarTurmaCtIshigekiRoute
+    }
+    '/treinar/turma/studio-top-fitness/': {
+      id: '/treinar/turma/studio-top-fitness/'
+      path: '/'
+      fullPath: '/treinar/turma/studio-top-fitness/'
+      preLoaderRoute: typeof TreinarTurmaStudioTopFitnessIndexRouteImport
+      parentRoute: typeof TreinarTurmaStudioTopFitnessRoute
+    }
+    '/treinar/turma/studio-top-fitness/interesse': {
+      id: '/treinar/turma/studio-top-fitness/interesse'
+      path: '/interesse'
+      fullPath: '/treinar/turma/studio-top-fitness/interesse'
+      preLoaderRoute: typeof TreinarTurmaStudioTopFitnessInteresseRouteImport
+      parentRoute: typeof TreinarTurmaStudioTopFitnessRoute
     }
   }
 }
@@ -285,13 +381,50 @@ const TreinarPersonalRouteWithChildren = TreinarPersonalRoute._addFileChildren(
   TreinarPersonalRouteChildren,
 )
 
+interface TreinarTurmaCtIshigekiRouteChildren {
+  TreinarTurmaCtIshigekiInteresseRoute: typeof TreinarTurmaCtIshigekiInteresseRoute
+  TreinarTurmaCtIshigekiIndexRoute: typeof TreinarTurmaCtIshigekiIndexRoute
+}
+
+const TreinarTurmaCtIshigekiRouteChildren: TreinarTurmaCtIshigekiRouteChildren =
+  {
+    TreinarTurmaCtIshigekiInteresseRoute: TreinarTurmaCtIshigekiInteresseRoute,
+    TreinarTurmaCtIshigekiIndexRoute: TreinarTurmaCtIshigekiIndexRoute,
+  }
+
+const TreinarTurmaCtIshigekiRouteWithChildren =
+  TreinarTurmaCtIshigekiRoute._addFileChildren(
+    TreinarTurmaCtIshigekiRouteChildren,
+  )
+
+interface TreinarTurmaStudioTopFitnessRouteChildren {
+  TreinarTurmaStudioTopFitnessInteresseRoute: typeof TreinarTurmaStudioTopFitnessInteresseRoute
+  TreinarTurmaStudioTopFitnessIndexRoute: typeof TreinarTurmaStudioTopFitnessIndexRoute
+}
+
+const TreinarTurmaStudioTopFitnessRouteChildren: TreinarTurmaStudioTopFitnessRouteChildren =
+  {
+    TreinarTurmaStudioTopFitnessInteresseRoute:
+      TreinarTurmaStudioTopFitnessInteresseRoute,
+    TreinarTurmaStudioTopFitnessIndexRoute:
+      TreinarTurmaStudioTopFitnessIndexRoute,
+  }
+
+const TreinarTurmaStudioTopFitnessRouteWithChildren =
+  TreinarTurmaStudioTopFitnessRoute._addFileChildren(
+    TreinarTurmaStudioTopFitnessRouteChildren,
+  )
+
 interface TreinarTurmaRouteChildren {
-  TreinarTurmaInteresseRoute: typeof TreinarTurmaInteresseRoute
+  TreinarTurmaCtIshigekiRoute: typeof TreinarTurmaCtIshigekiRouteWithChildren
+  TreinarTurmaStudioTopFitnessRoute: typeof TreinarTurmaStudioTopFitnessRouteWithChildren
   TreinarTurmaIndexRoute: typeof TreinarTurmaIndexRoute
 }
 
 const TreinarTurmaRouteChildren: TreinarTurmaRouteChildren = {
-  TreinarTurmaInteresseRoute: TreinarTurmaInteresseRoute,
+  TreinarTurmaCtIshigekiRoute: TreinarTurmaCtIshigekiRouteWithChildren,
+  TreinarTurmaStudioTopFitnessRoute:
+    TreinarTurmaStudioTopFitnessRouteWithChildren,
   TreinarTurmaIndexRoute: TreinarTurmaIndexRoute,
 }
 
