@@ -29,14 +29,29 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "André Rediss — Personal Trainer & Muay Thai Coach em Guaíba" },
+      {
+        name: "description",
+        content:
+          "Personal Trainer e Treinador de Muay Thai em Guaíba - RS. Mais de 27 anos de Artes Marciais.",
+      },
+      { name: "author", content: "André Rediss" },
+      { property: "og:title", content: "André Rediss — Personal Trainer & Muay Thai Coach" },
+      {
+        property: "og:description",
+        content:
+          "Personal Trainer e Treinador de Muay Thai em Guaíba - RS. Mais de 27 anos de Artes Marciais.",
+      },
+      { property: "og:image", content: "https://andrerediss.com/logo.png" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "André Rediss — Personal Trainer & Muay Thai Coach" },
+      {
+        name: "twitter:description",
+        content:
+          "Personal Trainer e Treinador de Muay Thai em Guaíba - RS. Mais de 27 anos de Artes Marciais.",
+      },
+      { name: "twitter:image", content: "https://andrerediss.com/logo.png" },
     ],
     links: [
       {
