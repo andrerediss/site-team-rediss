@@ -10,7 +10,7 @@ export const Route = createFileRoute("/treinar/turma/")({
       {
         name: "description",
         content:
-          "Duas opções de turma de Muay Thai em Guaíba - RS: Studio Top Fitness e a nova turma no CT Ishigeki, com início em setembro.",
+          "Duas opções de turma de Muay Thai em Guaíba - RS: Studio Top Fitness e CT Ishigeki. Turmas em breve — entre na lista de espera.",
       },
     ],
   }),
@@ -22,14 +22,14 @@ const turmas = [
     icon: Users,
     label: "Studio Top Fitness",
     desc: "Turma reduzida com até 5 alunos. R$100/mês.",
-    tag: "Em formação",
+    tag: "Em breve",
   },
   {
     to: "/treinar/turma/ct-ishigeki",
     icon: Flame,
     label: "CT Ishigeki",
-    desc: "Nova turma — terças e quintas, 20:30. Início em setembro.",
-    tag: "Início em setembro",
+    desc: "Nova turma — terças e quintas, 20:30. R$149/mês.",
+    tag: "Em breve",
   },
 ];
 
@@ -56,8 +56,8 @@ function TurmaEscolhaPage() {
           Escolha sua turma
         </h1>
         <p className="mx-auto mt-4 max-w-md text-muted-foreground">
-          Turmas reduzidas, técnica sólida e ambiente motivador. Veja horário, local e valores de
-          cada opção.
+          Turmas reduzidas, técnica sólida e ambiente motivador. As turmas ainda não começaram —
+          entre na lista de espera para ser avisado na abertura.
         </p>
       </div>
 

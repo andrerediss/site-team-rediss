@@ -10,7 +10,7 @@ export const Route = createFileRoute("/treinar/turma/studio-top-fitness/")({
       {
         name: "description",
         content:
-          "Turma de Muay Thai com até 5 alunos em Guaíba - RS, no Studio Top Fitness. R$100/mês. Ambiente motivador e técnica sólida.",
+          "Turma de Muay Thai com até 5 alunos em Guaíba - RS, no Studio Top Fitness. R$100/mês. Turma em breve — entre na lista de espera.",
       },
     ],
   }),
@@ -43,6 +43,9 @@ function TurmaStudioTopFitnessPage() {
           técnica sólida e atenção personalizada.
         </p>
         <div className="mt-4 inline-flex flex-wrap justify-center gap-2">
+          <span className="rounded bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-primary">
+            Em breve
+          </span>
           <span className="rounded bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-primary">
             Até 5 alunos
           </span>
@@ -121,12 +124,12 @@ function TurmaStudioTopFitnessPage() {
         >
           <span className="flex items-center gap-3">
             <CalendarDays className="h-5 w-5" />
-            Entrar na lista
+            Entrar na lista de espera
           </span>
           <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
         </Link>
         <p className="mt-3 text-center text-xs text-muted-foreground/50">
-          Turma em formação · vagas limitadas
+          Turma em breve · vagas limitadas
         </p>
       </section>
 

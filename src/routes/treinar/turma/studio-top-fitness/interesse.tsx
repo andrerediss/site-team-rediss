@@ -94,7 +94,7 @@ function InteresseTurmaPage() {
           <Clock3 className="h-8 w-8" strokeWidth={1.5} />
         </div>
         <p className="mt-6 font-display text-xs uppercase tracking-[0.35em] text-primary">
-          Turma em formação
+          Turma em breve
         </p>
         <h1 className="mt-2 font-display text-4xl font-black uppercase leading-none sm:text-5xl">
           Em breve

@@ -35,8 +35,8 @@ const services = [
     to: "/treinar/turma",
     icon: Users,
     label: "Muay Thai Turma",
-    desc: "Studio Top Fitness ou a nova turma no CT Ishigeki, a partir de setembro.",
-    tag: "Turma",
+    desc: "Turmas no Studio Top Fitness e no CT Ishigeki. Entre na lista de espera.",
+    tag: "Em breve",
   },
 ];
 

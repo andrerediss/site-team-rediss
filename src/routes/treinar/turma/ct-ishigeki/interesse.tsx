@@ -7,11 +7,11 @@ export const Route = createFileRoute("/treinar/turma/ct-ishigeki/interesse")({
   component: InteresseCtIshigekiPage,
   head: () => ({
     meta: [
-      { title: "Garantir Vaga — Muay Thai Turma — CT Ishigeki — André Rediss" },
+      { title: "Lista de Espera — Muay Thai Turma — CT Ishigeki — André Rediss" },
       {
         name: "description",
         content:
-          "Garanta sua vaga na nova turma de Muay Thai no CT Ishigeki, em Guaíba - RS. Início em setembro, terças e quintas às 20:30.",
+          "Entre na lista de espera da nova turma de Muay Thai no CT Ishigeki, em Guaíba - RS. Terças e quintas às 20:30.",
       },
     ],
   }),
@@ -50,13 +50,13 @@ function InteresseCtIshigekiPage() {
       } | null;
 
       if (!response.ok || !result?.success) {
-        throw new Error(result?.message ?? "Não foi possível registrar sua pré-inscrição.");
+        throw new Error(result?.message ?? "Não foi possível registrar seu interesse.");
       }
 
       setState("success");
     } catch (error) {
       setErrorMessage(
-        error instanceof Error ? error.message : "Não foi possível registrar sua pré-inscrição.",
+        error instanceof Error ? error.message : "Não foi possível registrar seu interesse.",
       );
       setState("error");
     }
@@ -79,14 +79,14 @@ function InteresseCtIshigekiPage() {
           <CalendarDays className="h-8 w-8" strokeWidth={1.5} />
         </div>
         <p className="mt-6 font-display text-xs uppercase tracking-[0.35em] text-primary">
-          Turma confirmada · Início em setembro
+          Turma em breve
         </p>
         <h1 className="mt-2 font-display text-4xl font-black uppercase leading-none sm:text-5xl">
-          Garanta sua vaga
+          Lista de espera
         </h1>
         <p className="mx-auto mt-4 max-w-md text-muted-foreground">
-          Terças e quintas, 20:30, no CT Ishigeki. Vagas limitadas — preencha seus dados e
-          entraremos em contato para confirmar sua matrícula.
+          Terças e quintas, 20:30, no CT Ishigeki. A turma ainda não começou — deixe seus dados e
+          avisamos assim que as vagas abrirem.
         </p>
       </div>
 
@@ -95,11 +95,11 @@ function InteresseCtIshigekiPage() {
           <div className="border border-primary/40 border-l-2 border-l-primary bg-card px-6 py-10 text-center">
             <CheckCircle2 className="mx-auto h-11 w-11 text-primary" strokeWidth={1.5} />
             <h2 className="mt-5 font-display text-3xl font-black uppercase">
-              Pré-inscrição registrada
+              Interesse registrado
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Você garantiu sua vaga na lista de pré-inscritos da turma do CT Ishigeki. Entraremos
-              em contato para confirmar os detalhes da matrícula.
+              Você entrou na lista de espera da turma do CT Ishigeki. Avisaremos assim que as vagas
+              abrirem.
             </p>
             <Link
               to="/treinar/turma/ct-ishigeki"
@@ -114,7 +114,7 @@ function InteresseCtIshigekiPage() {
             <div className="flex items-start gap-3 border-b border-border/30 pb-6">
               <CalendarDays className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
               <div>
-                <h2 className="font-display text-xl font-black uppercase">Pré-inscrição</h2>
+                <h2 className="font-display text-xl font-black uppercase">Lista de espera</h2>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Preencha seus dados. Leva menos de um minuto.
                 </p>
@@ -184,7 +184,7 @@ function InteresseCtIshigekiPage() {
                 disabled={state === "submitting"}
                 className="group flex w-full items-center justify-between bg-primary px-5 py-4 font-display text-base font-bold uppercase tracking-widest text-primary-foreground transition hover:bg-[oklch(0.595_0.225_27.5)] disabled:cursor-wait disabled:opacity-70"
               >
-                {state === "submitting" ? "Registrando..." : "Garantir vaga"}
+                {state === "submitting" ? "Registrando..." : "Entrar na lista"}
                 <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
               </button>
             </form>

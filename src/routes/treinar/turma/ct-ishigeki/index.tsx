@@ -10,7 +10,7 @@ export const Route = createFileRoute("/treinar/turma/ct-ishigeki/")({
       {
         name: "description",
         content:
-          "Nova turma de Muay Thai no CT Ishigeki, em Guaíba - RS. Início em setembro, aulas às terças e quintas, 20:30. R$149/mês. Garanta sua vaga.",
+          "Nova turma de Muay Thai no CT Ishigeki, em Guaíba - RS. Aulas às terças e quintas, 20:30. R$149/mês. Turma em breve — entre na lista de espera.",
       },
     ],
   }),
@@ -40,15 +40,15 @@ function TurmaCtIshigekiPage() {
           Muay Thai Turma
         </h1>
         <p className="mx-auto mt-4 max-w-md text-muted-foreground">
-          Nova turma no CT Ishigeki, com início em setembro. Técnica sólida, ambiente motivador e
-          acompanhamento do Professor André Rediss.
+          Nova turma no CT Ishigeki. Técnica sólida, ambiente motivador e acompanhamento do
+          Professor André Rediss.
         </p>
         <div className="mt-4 inline-flex flex-wrap justify-center gap-2">
           <span className="rounded bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-primary">
-            Turma confirmada
+            Em breve
           </span>
           <span className="rounded bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-primary">
-            Início em setembro
+            Lista de espera aberta
           </span>
         </div>
       </div>
@@ -100,7 +100,7 @@ function TurmaCtIshigekiPage() {
                 Terças e quintas — 20:30
               </h3>
               <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                Início das aulas em setembro. Vagas limitadas.
+                As aulas ainda não começaram. Avisamos a data de início pelo WhatsApp.
               </p>
             </div>
           </div>
@@ -144,12 +144,12 @@ function TurmaCtIshigekiPage() {
         >
           <span className="flex items-center gap-3">
             <CalendarDays className="h-5 w-5" />
-            Garantir vaga
+            Entrar na lista de espera
           </span>
           <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
         </Link>
         <p className="mt-3 text-center text-xs text-muted-foreground/50">
-          Turma confirmada · vagas limitadas
+          Turma em breve · vagas limitadas
         </p>
       </section>
 
